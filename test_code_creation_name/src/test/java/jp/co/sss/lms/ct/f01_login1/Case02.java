@@ -41,10 +41,15 @@ public class Case02 {
 	@Test
 	@Order(1)
 	@DisplayName("テスト01 トップページURLでアクセス")
-	void test01() {
+	void test01() throws Exception {
 		goTo("http://localhost:8080/lms/");
 		String pageTitle = webDriver.getTitle();
 		assertEquals("ログイン | LMS", pageTitle);
+
+		File file = ((TakesScreenshot) webDriver).getScreenshotAs(OutputType.FILE);
+		FileUtils.copyFile(file,
+				new File(
+						"evidence/case2_loginPage.png"));
 	}
 
 	@Test
@@ -61,7 +66,7 @@ public class Case02 {
 		File file = ((TakesScreenshot) webDriver).getScreenshotAs(OutputType.FILE);
 		FileUtils.copyFile(file,
 				new File(
-						"C:\\Users\\y_arai\\git\\lms-test-src-rp2\\test_code_creation_name\\doc\\evidence\\case2_success.png"));
+						"evidence/case2_error.png"));
 	}
 
 }

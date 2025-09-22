@@ -48,7 +48,7 @@ public class Case01 {
 		File file = ((TakesScreenshot) webDriver).getScreenshotAs(OutputType.FILE);
 		FileUtils.copyFile(file,
 				new File(
-						"C:\\Users\\y_arai\\git\\lms-test-src-rp2\\test_code_creation_name\\doc\\evidence\\case1_success.png"));
+						"evidence/case1_loginPage.png"));
 	}
 
 }
