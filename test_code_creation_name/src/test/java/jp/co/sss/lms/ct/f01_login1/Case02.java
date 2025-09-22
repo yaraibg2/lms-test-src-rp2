@@ -49,7 +49,7 @@ public class Case02 {
 		File file = ((TakesScreenshot) webDriver).getScreenshotAs(OutputType.FILE);
 		FileUtils.copyFile(file,
 				new File(
-						"evidence/case2_loginPage.png"));
+						"evidence/case2_1_loginPage.png"));
 	}
 
 	@Test
@@ -66,7 +66,7 @@ public class Case02 {
 		File file = ((TakesScreenshot) webDriver).getScreenshotAs(OutputType.FILE);
 		FileUtils.copyFile(file,
 				new File(
-						"evidence/case2_error.png"));
+						"evidence/case2_2_error.png"));
 	}
 
 }
