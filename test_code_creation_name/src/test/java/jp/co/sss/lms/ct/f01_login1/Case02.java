@@ -16,6 +16,7 @@ import org.junit.jupiter.api.TestMethodOrder;
 import org.openqa.selenium.By;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.WebElement;
 
 /**
  * 結合テスト ログイン機能①
@@ -56,8 +57,13 @@ public class Case02 {
 	@Order(2)
 	@DisplayName("テスト02 DBに登録されていないユーザーでログイン")
 	void test02() throws Exception {
-		webDriver.findElement(By.name("loginId")).sendKeys("StudentAAA01");
-		webDriver.findElement(By.name("password")).sendKeys("StudentAAA01");
+		WebElement loginId = webDriver.findElement(By.name("loginId"));
+		loginId.clear();
+		loginId.sendKeys("StudentAAA01");
+		WebElement password = webDriver.findElement(By.name("password"));
+		password.clear();
+		password.sendKeys("StudentAAA01");
+
 		webDriver.findElement(By.xpath("//*[@id=\"main\"]/div[1]/form/fieldset/div[3]/div/input")).click();
 		pageLoadTimeout(20);
 		String pageTitle = webDriver.getTitle();

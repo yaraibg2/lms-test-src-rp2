@@ -16,6 +16,7 @@ import org.junit.jupiter.api.TestMethodOrder;
 import org.openqa.selenium.By;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.WebElement;
 
 /**
  * 結合テスト よくある質問機能
@@ -56,12 +57,19 @@ public class Case04 {
 	@Order(2)
 	@DisplayName("テスト02 初回ログイン済みの受講生ユーザーでログイン")
 	void test02() throws Exception {
-		webDriver.findElement(By.name("loginId")).sendKeys("StudentAA01");
-		webDriver.findElement(By.name("password")).sendKeys("tisUserAA01");
+		WebElement loginId = webDriver.findElement(By.name("loginId"));
+		loginId.clear();
+		loginId.sendKeys("StudentAA01");
+		WebElement password = webDriver.findElement(By.name("password"));
+		password.clear();
+		password.sendKeys("tisUserAA01");
+
 		webDriver.findElement(By.xpath("//*[@id=\"main\"]/div[1]/form/fieldset/div[3]/div/input")).click();
 		pageLoadTimeout(20);
 		String pageTitle = webDriver.getTitle();
 		assertEquals("コース詳細 | LMS", pageTitle);
+		String welcomeMsg = webDriver.findElement(By.xpath("//*[@id=\"nav-content\"]/ul[2]/li[2]/a/small")).getText();
+		assertEquals("ようこそ受講生ＡＡ１さん", welcomeMsg);
 
 		File file = ((TakesScreenshot) webDriver).getScreenshotAs(OutputType.FILE);
 		FileUtils.copyFile(file,
