@@ -94,6 +94,8 @@ public class Case07 {
 			}
 		}
 		nonSubmitDay.click();
+		pageLoadTimeout(50);
+
 		String pageTitle = webDriver.getTitle();
 		assertEquals("セクション詳細 | LMS", pageTitle);
 
@@ -108,6 +110,7 @@ public class Case07 {
 	@DisplayName("テスト04 「提出する」ボタンを押下しレポート登録画面に遷移")
 	void test04() throws Exception {
 		webDriver.findElement(By.xpath("//*[@id=\"sectionDetail\"]/table/tbody/tr[2]/td/form/input[5]")).click();
+		pageLoadTimeout(50);
 
 		String pageTitle = webDriver.getTitle();
 		assertEquals("レポート登録 | LMS", pageTitle);

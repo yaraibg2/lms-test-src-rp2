@@ -18,6 +18,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.Select;
 
 /**
  * 結合テスト レポート機能
@@ -83,17 +84,10 @@ public class Case08 {
 	@DisplayName("テスト03 提出済の研修日の「詳細」ボタンを押下しセクション詳細画面に遷移")
 	void test03() throws Exception {
 		final List<WebElement> elements = webDriver.findElements(By.tagName("tr"));
-		WebElement submitedDay = null;
+		WebElement weekReportDay = elements.get(1).findElement(By.tagName("form"));
+		weekReportDay.click();
+		pageLoadTimeout(50);
 
-		for (WebElement element : elements) {
-			scrollBy("50");
-			final List<WebElement> classElements = element.findElements(By.className("w10per"));
-			if (classElements.get(0).getText().equals("提出済み")) {
-				submitedDay = element.findElement(By.tagName("form"));
-				break;
-			}
-		}
-		submitedDay.click();
 		String pageTitle = webDriver.getTitle();
 		assertEquals("セクション詳細 | LMS", pageTitle);
 
@@ -107,7 +101,9 @@ public class Case08 {
 	@Order(4)
 	@DisplayName("テスト04 「確認する」ボタンを押下しレポート登録画面に遷移")
 	void test04() throws Exception {
-		webDriver.findElement(By.xpath("//*[@id=\"sectionDetail\"]/table/tbody/tr[2]/td/form/input[6]")).click();
+		scrollBy("300");
+		webDriver.findElement(By.xpath("//*[@id=\"sectionDetail\"]/table[2]/tbody/tr[3]/td/form/input[6]")).click();
+		pageLoadTimeout(50);
 
 		String pageTitle = webDriver.getTitle();
 		assertEquals("レポート登録 | LMS", pageTitle);
@@ -122,11 +118,24 @@ public class Case08 {
 	@Order(5)
 	@DisplayName("テスト05 報告内容を修正して「提出する」ボタンを押下しセクション詳細画面に遷移")
 	void test05() throws Exception {
-		WebElement textArea = webDriver.findElement(By.xpath("//*[@id=\"content_0\"]"));
-		textArea.clear();
-		textArea.sendKeys("今日は楽しくありませんでした。");
+		Select understanding = new Select(webDriver.findElement(By.xpath("//*[@id=\"intFieldValue_0\"]")));
+		understanding.selectByVisibleText("3");
 
-		webDriver.findElement(By.xpath("//*[@id=\"main\"]/form/div[2]/fieldset/div/div/button")).click();
+		WebElement goal = webDriver.findElement(By.xpath("//*[@id=\"content_0\"]"));
+		goal.clear();
+		goal.sendKeys("10");
+
+		WebElement comment = webDriver.findElement(By.xpath("//*[@id=\"content_1\"]"));
+		comment.clear();
+		comment.sendKeys("今週も楽しく学べました。");
+
+		WebElement textArea = webDriver.findElement(By.xpath("//*[@id=\"content_2\"]"));
+		textArea.clear();
+		textArea.sendKeys("この一週間で、かなり成長できた気がします。");
+		scrollBy("100");
+
+		webDriver.findElement(By.xpath("//*[@id=\"main\"]/form/div[3]/fieldset/div/div/button")).click();
+		pageLoadTimeout(50);
 
 		String pageTitle = webDriver.getTitle();
 		assertEquals("セクション詳細 | LMS", pageTitle);
@@ -142,6 +151,7 @@ public class Case08 {
 	@DisplayName("テスト06 上部メニューの「ようこそ○○さん」リンクからユーザー詳細画面に遷移")
 	void test06() throws Exception {
 		webDriver.findElement(By.xpath("//*[@id=\"nav-content\"]/ul[2]/li[2]/a")).click();
+		pageLoadTimeout(50);
 
 		String pageTitle = webDriver.getTitle();
 		assertEquals("ユーザー詳細", pageTitle);
@@ -159,14 +169,22 @@ public class Case08 {
 	void test07() throws Exception {
 		scrollBy("700");
 		final List<WebElement> elements = webDriver.findElements(By.tagName("form"));
-		WebElement element = elements.get(elements.size() - 3);
+		WebElement element = elements.get(elements.size() - 9);
 
 		element.click();
+		pageLoadTimeout(50);
 
 		String pageTitle = webDriver.getTitle();
 		assertEquals("レポート詳細 | LMS", pageTitle);
-		String text = webDriver.findElement(By.xpath("//*[@id=\"main\"]/div[1]/table/tbody/tr/td")).getText();
-		assertEquals("今日は楽しくありませんでした。", text);
+		String understanding = webDriver.findElement(By.xpath("//*[@id=\"main\"]/div[1]/table/tbody/tr[2]/td[2]/p"))
+				.getText();
+		assertEquals("3", understanding);
+		String goal = webDriver.findElement(By.xpath("//*[@id=\"main\"]/div[2]/table/tbody/tr[1]/td")).getText();
+		assertEquals("10", goal);
+		String comment = webDriver.findElement(By.xpath("//*[@id=\"main\"]/div[2]/table/tbody/tr[2]/td")).getText();
+		assertEquals("今週も楽しく学べました。", comment);
+		String text = webDriver.findElement(By.xpath("//*[@id=\"main\"]/div[2]/table/tbody/tr[3]/td")).getText();
+		assertEquals("この一週間で、かなり成長できた気がします。", text);
 
 		File file = ((TakesScreenshot) webDriver).getScreenshotAs(OutputType.FILE);
 		FileUtils.copyFile(file,
