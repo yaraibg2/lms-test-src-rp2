@@ -4,6 +4,7 @@ import static jp.co.sss.lms.ct.util.WebDriverUtils.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.io.File;
+import java.util.List;
 
 import org.apache.commons.io.FileUtils;
 import org.junit.jupiter.api.AfterAll;
@@ -113,15 +114,55 @@ public class Case06 {
 	@Test
 	@Order(5)
 	@DisplayName("テスト05 カテゴリ検索で該当カテゴリの検索結果だけ表示")
-	void test05() {
-		// TODO ここに追加
+	void test05() throws Exception {
+		final List<WebElement> allElements = webDriver.findElements(By.className("sorting_1"));
+		int categoryElements = 0;
+
+		webDriver.findElement(By.linkText("【研修関係】")).click();
+		scrollBy("300");
+		final List<WebElement> trainingElements = webDriver.findElements(By.className("sorting_1"));
+		categoryElements += trainingElements.size();
+		scrollTo("0");
+
+		webDriver.findElement(By.linkText("【人材開発支援助成金】")).click();
+		scrollBy("300");
+		final List<WebElement> moneyElements = webDriver.findElements(By.className("sorting_1"));
+		categoryElements += moneyElements.size();
+		scrollTo("20");
+
+		webDriver.findElement(By.linkText("【遠隔研修】")).click();
+		scrollBy("300");
+		final List<WebElement> remoteElements = webDriver.findElements(By.className("sorting_1"));
+		categoryElements += remoteElements.size();
+		scrollTo("0");
+
+		assertEquals(allElements.size(), categoryElements);
+
+		File file = ((TakesScreenshot) webDriver).getScreenshotAs(OutputType.FILE);
+		FileUtils.copyFile(file,
+				new File(
+						"evidence/case6_5_category.png"));
 	}
 
 	@Test
 	@Order(6)
 	@DisplayName("テスト06 検索結果の質問をクリックしその回答を表示")
-	void test06() {
-		// TODO ここに追加
+	void test06() throws Exception {
+		webDriver.findElement(By.linkText("【研修関係】")).click();
+		scrollBy("300");
+		final List<WebElement> elements = webDriver.findElements(By.className("sorting_1"));
+		WebElement element = elements.get(0);
+		String beforeText = element.getText();
+		element.click();
+		String afterText = element.getText();
+
+		assertFalse(beforeText.equals(afterText));
+		assertTrue(beforeText.length() < afterText.length());
+
+		File file = ((TakesScreenshot) webDriver).getScreenshotAs(OutputType.FILE);
+		FileUtils.copyFile(file,
+				new File(
+						"evidence/case6_6_answer.png"));
 	}
 
 }

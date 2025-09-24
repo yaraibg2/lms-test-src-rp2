@@ -122,16 +122,14 @@ public class Case05 {
 		webDriver.findElement(By.xpath("//*[@id=\"main\"]/div[1]/form/fieldset/div[2]/div/input[1]")).click();
 		pageLoadTimeout(20);
 
-		final List<WebElement> buttons = webDriver.findElements(By.className("sorting_1"));
-		for (WebElement button : buttons) {
-			button.click();
+		final List<WebElement> elements = webDriver.findElements(By.className("sorting_1"));
+		for (WebElement element : elements) {
+			scrollBy("300");
+			element.click();
+			String word = element.getText();
+			assertTrue(word.contains("研修"));
 		}
 
-		//		final List<WebElement> elements = webDriver.findElements(By.className("sorting_1"));
-		//		for (WebElement element : elements) {
-		//			String word = element.getText();
-		//			assertTrue(word.contains("研修"));
-		//		}
 		File file = ((TakesScreenshot) webDriver).getScreenshotAs(OutputType.FILE);
 		FileUtils.copyFile(file,
 				new File(
@@ -142,6 +140,7 @@ public class Case05 {
 	@Order(6)
 	@DisplayName("テスト06 「クリア」ボタン押下で入力したキーワードを消去")
 	void test06() throws Exception {
+		scrollTo("0");
 		webDriver.findElement(By.xpath("//*[@id=\"main\"]/div[1]/form/fieldset/div[2]/div/input[2]")).click();
 		WebElement keyword = webDriver.findElement(By.name("keyword"));
 		assertEquals("", keyword.getText());
