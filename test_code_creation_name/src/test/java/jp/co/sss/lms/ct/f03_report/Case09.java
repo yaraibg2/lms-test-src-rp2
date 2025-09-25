@@ -53,7 +53,7 @@ public class Case09 {
 		File file = ((TakesScreenshot) webDriver).getScreenshotAs(OutputType.FILE);
 		FileUtils.copyFile(file,
 				new File(
-						"evidence/case9_1_loginPage.png"));
+						"evidence/case09_01_loginPage.png"));
 	}
 
 	@Test
@@ -77,7 +77,7 @@ public class Case09 {
 		File file = ((TakesScreenshot) webDriver).getScreenshotAs(OutputType.FILE);
 		FileUtils.copyFile(file,
 				new File(
-						"evidence/case9_2_success.png"));
+						"evidence/case09_02_success.png"));
 	}
 
 	@Test
@@ -93,7 +93,7 @@ public class Case09 {
 		File file = ((TakesScreenshot) webDriver).getScreenshotAs(OutputType.FILE);
 		FileUtils.copyFile(file,
 				new File(
-						"evidence/case9_3_userDetail.png"));
+						"evidence/case09_03_userDetail.png"));
 	}
 
 	@Test
@@ -113,7 +113,7 @@ public class Case09 {
 		File file = ((TakesScreenshot) webDriver).getScreenshotAs(OutputType.FILE);
 		FileUtils.copyFile(file,
 				new File(
-						"evidence/case9_4_report.png"));
+						"evidence/case09_04_report.png"));
 	}
 
 	@Test
@@ -133,7 +133,7 @@ public class Case09 {
 		File file = ((TakesScreenshot) webDriver).getScreenshotAs(OutputType.FILE);
 		FileUtils.copyFile(file,
 				new File(
-						"evidence/case9_5_learningError.png"));
+						"evidence/case09_05_learningError.png"));
 
 		newLearning.sendKeys("ITリテラシー①");
 	}
@@ -154,7 +154,7 @@ public class Case09 {
 		File file = ((TakesScreenshot) webDriver).getScreenshotAs(OutputType.FILE);
 		FileUtils.copyFile(file,
 				new File(
-						"evidence/case9_6_understandingError.png"));
+						"evidence/case09_06_understandingError.png"));
 
 		Select newUnderstanding = new Select(webDriver.findElement(By.tagName("select")));
 		newUnderstanding.selectByVisibleText("3");
@@ -178,7 +178,7 @@ public class Case09 {
 		File file = ((TakesScreenshot) webDriver).getScreenshotAs(OutputType.FILE);
 		FileUtils.copyFile(file,
 				new File(
-						"evidence/case9_7_goalIsNotNumber.png"));
+						"evidence/case09_07_goalIsNotNumber.png"));
 
 		newGoal.clear();
 		newGoal.sendKeys("10");
@@ -202,7 +202,7 @@ public class Case09 {
 		File file = ((TakesScreenshot) webDriver).getScreenshotAs(OutputType.FILE);
 		FileUtils.copyFile(file,
 				new File(
-						"evidence/case9_8_goalOverRange.png"));
+						"evidence/case09_08_goalOverRange.png"));
 
 		newGoal.clear();
 		newGoal.sendKeys("10");
@@ -233,7 +233,7 @@ public class Case09 {
 		File file = ((TakesScreenshot) webDriver).getScreenshotAs(OutputType.FILE);
 		FileUtils.copyFile(file,
 				new File(
-						"evidence/case9_9_commentError.png"));
+						"evidence/case09_09_commentError.png"));
 
 		newGoal.sendKeys("10");
 		newComment.sendKeys("今週も楽しく学べました。");
@@ -267,7 +267,7 @@ public class Case09 {
 		File file = ((TakesScreenshot) webDriver).getScreenshotAs(OutputType.FILE);
 		FileUtils.copyFile(file,
 				new File(
-						"evidence/case9_10_textError.png"));
+						"evidence/case09_10_textError.png"));
 	}
 
 }
