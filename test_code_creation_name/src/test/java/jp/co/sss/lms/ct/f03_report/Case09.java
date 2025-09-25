@@ -212,23 +212,30 @@ public class Case09 {
 	@Order(9)
 	@DisplayName("テスト09 不適切な内容で修正して「提出する」ボタンを押下しエラー表示：目標の達成度・所感が未入力")
 	void test09() throws Exception {
-		scrollBy("700");
+		scrollBy("200");
+		WebElement goal = webDriver.findElement(By.xpath("//*[@id=\"content_0\"]"));
+		goal.clear();
 		WebElement comment = webDriver.findElement(By.xpath("//*[@id=\"content_1\"]"));
 		comment.clear();
 
 		scrollBy("700");
 		webDriver.findElement(By.xpath("//*[@id=\"main\"]/form/div[3]/fieldset/div/div/button")).click();
+		scrollBy("200");
 
-		scrollBy("700");
+		WebElement newGoal = webDriver.findElement(By.xpath("//*[@id=\"content_0\"]"));
+		String errorGoalClass = newGoal.getAttribute("class");
 		WebElement newComment = webDriver.findElement(By.xpath("//*[@id=\"content_1\"]"));
-		String errorClass = newComment.getAttribute("class");
-		assertEquals("form-control errorInput", errorClass);
+		String errorCommentClass = newComment.getAttribute("class");
+
+		assertEquals("form-control errorInput", errorGoalClass);
+		assertEquals("form-control errorInput", errorCommentClass);
 
 		File file = ((TakesScreenshot) webDriver).getScreenshotAs(OutputType.FILE);
 		FileUtils.copyFile(file,
 				new File(
 						"evidence/case9_9_commentError.png"));
 
+		newGoal.sendKeys("10");
 		newComment.sendKeys("今週も楽しく学べました。");
 	}
 
@@ -237,6 +244,9 @@ public class Case09 {
 	@DisplayName("テスト10 不適切な内容で修正して「提出する」ボタンを押下しエラー表示：所感・一週間の振り返りが2000文字超")
 	void test10() throws Exception {
 		scrollBy("700");
+		WebElement comment = webDriver.findElement(By.xpath("//*[@id=\"content_1\"]"));
+		comment.clear();
+		comment.sendKeys(StringUtils.repeat("研修", 1001));
 		WebElement text = webDriver.findElement(By.xpath("//*[@id=\"content_2\"]"));
 		text.clear();
 		text.sendKeys(StringUtils.repeat("研修", 1001));
@@ -246,9 +256,13 @@ public class Case09 {
 		webDriver.findElement(By.xpath("//*[@id=\"main\"]/form/div[3]/fieldset/div/div/button")).click();
 		scrollBy("700");
 
+		WebElement newComment = webDriver.findElement(By.xpath("//*[@id=\"content_1\"]"));
+		String errorCommentClass = newComment.getAttribute("class");
 		WebElement newText = webDriver.findElement(By.xpath("//*[@id=\"content_2\"]"));
-		String errorClass = newText.getAttribute("class");
-		assertEquals("form-control errorInput", errorClass);
+		String errorTextClass = newText.getAttribute("class");
+
+		assertEquals("form-control errorInput", errorCommentClass);
+		assertEquals("form-control errorInput", errorTextClass);
 
 		File file = ((TakesScreenshot) webDriver).getScreenshotAs(OutputType.FILE);
 		FileUtils.copyFile(file,
