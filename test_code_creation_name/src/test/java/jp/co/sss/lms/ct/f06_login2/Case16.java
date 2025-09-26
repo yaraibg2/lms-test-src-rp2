@@ -99,14 +99,6 @@ public class Case16 {
 	@Order(4)
 	@DisplayName("テスト04 パスワードを未入力で「変更」ボタン押下")
 	void test04() throws Exception {
-		scrollBy("50");
-		WebElement password = webDriver.findElement(By.name("password"));
-		password.clear();
-		password.sendKeys("tisUserAA02");
-
-		WebElement passwordConfirm = webDriver.findElement(By.name("passwordConfirm"));
-		passwordConfirm.clear();
-		passwordConfirm.sendKeys("tisUserAA02");
 		scrollBy("200");
 
 		webDriver.findElement(By.xpath("//*[@id=\"upd-form\"]/div[1]/fieldset/div[4]/div/button[2]")).click();
@@ -115,11 +107,20 @@ public class Case16 {
 		}
 		webDriver.findElement(By.xpath("//*[@id=\"upd-btn\"]")).click();
 		pageLoadTimeout(20);
-		scrollBy("50");
+		scrollBy("100");
 
-		String errorMsg = webDriver.findElement(By.xpath("//*[@id=\"upd-form\"]/div[1]/fieldset/div[1]/div/ul/li/span"))
+		String currentErrorMsg = webDriver
+				.findElement(By.xpath("//*[@id=\"upd-form\"]/div[1]/fieldset/div[1]/div/ul/li/span"))
 				.getText();
-		assertEquals("現在のパスワードは必須です。", errorMsg);
+		assertEquals("現在のパスワードは必須です。", currentErrorMsg);
+		String newErrorMsg = webDriver
+				.findElement(By.xpath("//*[@id=\"upd-form\"]/div[1]/fieldset/div[2]/div/ul/li/span"))
+				.getText();
+		assertTrue(newErrorMsg.contains("パスワードは必須です。"));
+		String confirmErrorMsg = webDriver
+				.findElement(By.xpath("//*[@id=\"upd-form\"]/div[1]/fieldset/div[3]/div/ul/li/span"))
+				.getText();
+		assertEquals("確認パスワードは必須です。", confirmErrorMsg);
 
 		File file = ((TakesScreenshot) webDriver).getScreenshotAs(OutputType.FILE);
 		FileUtils.copyFile(file,
