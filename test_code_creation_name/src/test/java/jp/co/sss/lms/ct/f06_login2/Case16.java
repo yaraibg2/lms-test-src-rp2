@@ -50,7 +50,7 @@ public class Case16 {
 		File file = ((TakesScreenshot) webDriver).getScreenshotAs(OutputType.FILE);
 		FileUtils.copyFile(file,
 				new File(
-						"evidence/case16_01_loginPage.png"));
+						"evidence/case16/01_loginPage.png"));
 	}
 
 	@Test
@@ -74,7 +74,7 @@ public class Case16 {
 		File file = ((TakesScreenshot) webDriver).getScreenshotAs(OutputType.FILE);
 		FileUtils.copyFile(file,
 				new File(
-						"evidence/case16_02_success.png"));
+						"evidence/case16/02_success.png"));
 	}
 
 	@Test
@@ -92,7 +92,7 @@ public class Case16 {
 		File file = ((TakesScreenshot) webDriver).getScreenshotAs(OutputType.FILE);
 		FileUtils.copyFile(file,
 				new File(
-						"evidence/case16_03_agree.png"));
+						"evidence/case16/03_agree.png"));
 	}
 
 	@Test
@@ -124,7 +124,7 @@ public class Case16 {
 		File file = ((TakesScreenshot) webDriver).getScreenshotAs(OutputType.FILE);
 		FileUtils.copyFile(file,
 				new File(
-						"evidence/case16_04_currentPassError.png"));
+						"evidence/case16/04_currentPassError.png"));
 	}
 
 	@Test
@@ -159,7 +159,7 @@ public class Case16 {
 		File file = ((TakesScreenshot) webDriver).getScreenshotAs(OutputType.FILE);
 		FileUtils.copyFile(file,
 				new File(
-						"evidence/case16_05_passOverRangeError.png"));
+						"evidence/case16/05_passOverRangeError.png"));
 	}
 
 	@Test
@@ -194,7 +194,7 @@ public class Case16 {
 		File file = ((TakesScreenshot) webDriver).getScreenshotAs(OutputType.FILE);
 		FileUtils.copyFile(file,
 				new File(
-						"evidence/case16_06_passIsInvalidError.png"));
+						"evidence/case16/06_passIsInvalidError.png"));
 	}
 
 	@Test
@@ -229,7 +229,7 @@ public class Case16 {
 		File file = ((TakesScreenshot) webDriver).getScreenshotAs(OutputType.FILE);
 		FileUtils.copyFile(file,
 				new File(
-						"evidence/case16_07_passNotMatchError.png"));
+						"evidence/case16/07_passNotMatchError.png"));
 	}
 
 }

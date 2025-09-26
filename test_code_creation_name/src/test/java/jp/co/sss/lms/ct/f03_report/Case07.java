@@ -51,7 +51,7 @@ public class Case07 {
 		File file = ((TakesScreenshot) webDriver).getScreenshotAs(OutputType.FILE);
 		FileUtils.copyFile(file,
 				new File(
-						"evidence/case07_01_loginPage.png"));
+						"evidence/case07/01_loginPage.png"));
 	}
 
 	@Test
@@ -75,7 +75,7 @@ public class Case07 {
 		File file = ((TakesScreenshot) webDriver).getScreenshotAs(OutputType.FILE);
 		FileUtils.copyFile(file,
 				new File(
-						"evidence/case07_02_success.png"));
+						"evidence/case07/02_success.png"));
 	}
 
 	@Test
@@ -102,7 +102,7 @@ public class Case07 {
 		File file = ((TakesScreenshot) webDriver).getScreenshotAs(OutputType.FILE);
 		FileUtils.copyFile(file,
 				new File(
-						"evidence/case07_03_section.png"));
+						"evidence/case07/03_section.png"));
 	}
 
 	@Test
@@ -118,7 +118,7 @@ public class Case07 {
 		File file = ((TakesScreenshot) webDriver).getScreenshotAs(OutputType.FILE);
 		FileUtils.copyFile(file,
 				new File(
-						"evidence/case07_04_report.png"));
+						"evidence/case07/04_report.png"));
 	}
 
 	@Test
@@ -138,7 +138,7 @@ public class Case07 {
 		File file = ((TakesScreenshot) webDriver).getScreenshotAs(OutputType.FILE);
 		FileUtils.copyFile(file,
 				new File(
-						"evidence/case07_05_submit.png"));
+						"evidence/case07/05_submit.png"));
 	}
 
 }

@@ -58,7 +58,7 @@ public class Case14 {
 		File file = ((TakesScreenshot) webDriver).getScreenshotAs(OutputType.FILE);
 		FileUtils.copyFile(file,
 				new File(
-						"evidence/case14_01_loginPage.png"));
+						"evidence/case14/01_loginPage.png"));
 	}
 
 	@Test
@@ -82,7 +82,7 @@ public class Case14 {
 		File file = ((TakesScreenshot) webDriver).getScreenshotAs(OutputType.FILE);
 		FileUtils.copyFile(file,
 				new File(
-						"evidence/case14_02_success.png"));
+						"evidence/case14/02_success.png"));
 	}
 
 	@Test
@@ -109,7 +109,7 @@ public class Case14 {
 		File file = ((TakesScreenshot) webDriver).getScreenshotAs(OutputType.FILE);
 		FileUtils.copyFile(file,
 				new File(
-						"evidence/case14_03_section.png"));
+						"evidence/case14/03_section.png"));
 	}
 
 	@Test
@@ -125,7 +125,7 @@ public class Case14 {
 		File file = ((TakesScreenshot) webDriver).getScreenshotAs(OutputType.FILE);
 		FileUtils.copyFile(file,
 				new File(
-						"evidence/case14_04_examDetail.png"));
+						"evidence/case14/04_examDetail.png"));
 	}
 
 	@Test
@@ -141,7 +141,7 @@ public class Case14 {
 		File file = ((TakesScreenshot) webDriver).getScreenshotAs(OutputType.FILE);
 		FileUtils.copyFile(file,
 				new File(
-						"evidence/case14_05_examStart.png"));
+						"evidence/case14/05_examStart.png"));
 	}
 
 	@Test
@@ -189,7 +189,7 @@ public class Case14 {
 		File file = ((TakesScreenshot) webDriver).getScreenshotAs(OutputType.FILE);
 		FileUtils.copyFile(file,
 				new File(
-						"evidence/case14_06_examCheck.png"));
+						"evidence/case14/06_examCheck.png"));
 	}
 
 	@Test
@@ -215,7 +215,7 @@ public class Case14 {
 		File file = ((TakesScreenshot) webDriver).getScreenshotAs(OutputType.FILE);
 		FileUtils.copyFile(file,
 				new File(
-						"evidence/case14_07_examResult.png"));
+						"evidence/case14/07_examResult.png"));
 	}
 
 	@Test
@@ -243,7 +243,7 @@ public class Case14 {
 		File file = ((TakesScreenshot) webDriver).getScreenshotAs(OutputType.FILE);
 		FileUtils.copyFile(file,
 				new File(
-						"evidence/case14_08_examComplete.png"));
+						"evidence/case14/08_examComplete.png"));
 	}
 
 }

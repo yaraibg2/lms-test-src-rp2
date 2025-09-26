@@ -48,7 +48,7 @@ public class Case01 {
 		File file = ((TakesScreenshot) webDriver).getScreenshotAs(OutputType.FILE);
 		FileUtils.copyFile(file,
 				new File(
-						"evidence/case01_loginPage.png"));
+						"evidence/case01/loginPage.png"));
 	}
 
 }

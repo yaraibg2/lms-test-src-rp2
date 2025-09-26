@@ -54,7 +54,7 @@ public class Case12 {
 		File file = ((TakesScreenshot) webDriver).getScreenshotAs(OutputType.FILE);
 		FileUtils.copyFile(file,
 				new File(
-						"evidence/case12_01_loginPage.png"));
+						"evidence/case12/01_loginPage.png"));
 	}
 
 	@Test
@@ -78,7 +78,7 @@ public class Case12 {
 		File file = ((TakesScreenshot) webDriver).getScreenshotAs(OutputType.FILE);
 		FileUtils.copyFile(file,
 				new File(
-						"evidence/case12_02_success.png"));
+						"evidence/case12/02_success.png"));
 	}
 
 	@Test
@@ -96,7 +96,7 @@ public class Case12 {
 		File file = ((TakesScreenshot) webDriver).getScreenshotAs(OutputType.FILE);
 		FileUtils.copyFile(file,
 				new File(
-						"evidence/case12_03_attendance.png"));
+						"evidence/case12/03_attendance.png"));
 	}
 
 	@Test
@@ -112,7 +112,7 @@ public class Case12 {
 		File file = ((TakesScreenshot) webDriver).getScreenshotAs(OutputType.FILE);
 		FileUtils.copyFile(file,
 				new File(
-						"evidence/case12_04_directAttendance.png"));
+						"evidence/case12/04_directAttendance.png"));
 	}
 
 	@Test
@@ -166,7 +166,7 @@ public class Case12 {
 		File file = ((TakesScreenshot) webDriver).getScreenshotAs(OutputType.FILE);
 		FileUtils.copyFile(file,
 				new File(
-						"evidence/case12_05_hourAndMinuteError.png"));
+						"evidence/case12/05_hourAndMinuteError.png"));
 
 		WebElement table = webDriver.findElement(By.xpath("//*[@id=\"main\"]/div/div"));
 		final List<WebElement> buttons = table.findElements(By.tagName("button"));
@@ -210,7 +210,7 @@ public class Case12 {
 		File file = ((TakesScreenshot) webDriver).getScreenshotAs(OutputType.FILE);
 		FileUtils.copyFile(file,
 				new File(
-						"evidence/case12_06_nonStartTimeError.png"));
+						"evidence/case12/06_nonStartTimeError.png"));
 
 		WebElement table = webDriver.findElement(By.xpath("//*[@id=\"main\"]/div/div"));
 		final List<WebElement> buttons = table.findElements(By.tagName("button"));
@@ -254,7 +254,7 @@ public class Case12 {
 		File file = ((TakesScreenshot) webDriver).getScreenshotAs(OutputType.FILE);
 		FileUtils.copyFile(file,
 				new File(
-						"evidence/case12_07_startTimeAfterEndTimeError.png"));
+						"evidence/case12/07_startTimeAfterEndTimeError.png"));
 
 		WebElement table = webDriver.findElement(By.xpath("//*[@id=\"main\"]/div/div"));
 		final List<WebElement> buttons = table.findElements(By.tagName("button"));
@@ -300,7 +300,7 @@ public class Case12 {
 		File file = ((TakesScreenshot) webDriver).getScreenshotAs(OutputType.FILE);
 		FileUtils.copyFile(file,
 				new File(
-						"evidence/case12_08_overBlankTimeError.png"));
+						"evidence/case12/08_overBlankTimeError.png"));
 
 		WebElement table = webDriver.findElement(By.xpath("//*[@id=\"main\"]/div/div"));
 		final List<WebElement> buttons = table.findElements(By.tagName("button"));
@@ -335,7 +335,7 @@ public class Case12 {
 		File file = ((TakesScreenshot) webDriver).getScreenshotAs(OutputType.FILE);
 		FileUtils.copyFile(file,
 				new File(
-						"evidence/case12_09_overNoteError.png"));
+						"evidence/case12/09_overNoteError.png"));
 	}
 
 }

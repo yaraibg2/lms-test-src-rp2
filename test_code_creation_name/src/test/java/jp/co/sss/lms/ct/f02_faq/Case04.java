@@ -50,7 +50,7 @@ public class Case04 {
 		File file = ((TakesScreenshot) webDriver).getScreenshotAs(OutputType.FILE);
 		FileUtils.copyFile(file,
 				new File(
-						"evidence/case04_01_loginPage.png"));
+						"evidence/case04/01_loginPage.png"));
 	}
 
 	@Test
@@ -74,7 +74,7 @@ public class Case04 {
 		File file = ((TakesScreenshot) webDriver).getScreenshotAs(OutputType.FILE);
 		FileUtils.copyFile(file,
 				new File(
-						"evidence/case04_02_success.png"));
+						"evidence/case04/02_success.png"));
 	}
 
 	@Test
@@ -91,7 +91,7 @@ public class Case04 {
 		File file = ((TakesScreenshot) webDriver).getScreenshotAs(OutputType.FILE);
 		FileUtils.copyFile(file,
 				new File(
-						"evidence/case04_03_helpPage.png"));
+						"evidence/case04/03_helpPage.png"));
 	}
 
 	@Test
@@ -99,6 +99,8 @@ public class Case04 {
 	@DisplayName("テスト04 「よくある質問」リンクからよくある質問画面を別タブに開く")
 	void test04() throws Exception {
 		webDriver.findElement(By.xpath("//*[@id=\"main\"]/div[2]/div[2]/p/a")).click();
+		pageLoadTimeout(20);
+
 		Object[] windowHandles = webDriver.getWindowHandles().toArray();
 		webDriver.switchTo().window((String) windowHandles[1]);
 		String pageTitle = webDriver.getTitle();
@@ -107,7 +109,7 @@ public class Case04 {
 		File file = ((TakesScreenshot) webDriver).getScreenshotAs(OutputType.FILE);
 		FileUtils.copyFile(file,
 				new File(
-						"evidence/case04_04_question.png"));
+						"evidence/case04/04_question.png"));
 	}
 
 }
